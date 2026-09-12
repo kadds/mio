@@ -66,6 +66,9 @@ features = [
 [target.'cfg(target_os = "wasi")'.dependencies]
 wasi = "0.11.0"
 
+[target.'cfg(target_os = "naos")'.dependencies]
+naos-sys = { path = "../../src/usr/rust/naos-sys" }
+
 [dev-dependencies]
 env_logger = { version = "0.11", default-features = false }
 rand = "0.9"
@@ -105,4 +108,4 @@ name = "udp_server"
 required-features = ["os-poll", "net"]
 
 [lints.rust]
-unexpected_cfgs = { level = "warn", check-cfg = ['cfg(mio_unsupported_force_poll_poll)', 'cfg(mio_unsupported_force_waker_pipe)'] }
+unexpected_cfgs = { level = "allow", check-cfg = ['cfg(mio_unsupported_force_poll_poll)', 'cfg(mio_unsupported_force_waker_pipe)', 'cfg(target_os, values("naos"))'] }

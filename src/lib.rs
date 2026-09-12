@@ -64,6 +64,10 @@ cfg_net! {
     pub mod net;
 }
 
+#[cfg(target_os = "naos")]
+#[cfg_attr(docsrs, doc(cfg(target_os = "naos")))]
+pub mod naos;
+
 #[doc(no_inline)]
 pub use event::Events;
 pub use interest::Interest;
